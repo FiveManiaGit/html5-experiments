@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Neon!</title>
+	</head>
+	<body>
+		<span class="neon">
+			NEON!
+		</span>
+
+		<span class="neon-blink" style="top: 75px; font-size: 24px; padding: 15px; background-color: #222224; border-radius: 5px; text-align: center;">
+			An HTML5 experiment by <a href="https://github.com/FiveManiaGit" style="color: white;">FiveMania</a>.
+			<br>
+			<small style="font-size: 12px; margin: 0; padding: 0;">This is <span style="color: red">not</span> a morse code.</small>
+		</span>
+	</body>
+	<style>
+		.neon {
+			color: rgb(255, 0, 255);
+			text-shadow: 0px 0px 15px rgb(255, 0, 255);
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			position: fixed;
+			font-size: 128px;
+			transition: 1s;
+		}
+
+		.neon-blink {
+			color: gold;
+			text-shadow: 0px 0px 15px gold;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			position: fixed;
+			font-size: 128px;
+		}
+
+		body, html {
+			background: linear-gradient(90deg, #000000 0%, #000000 49.99%, #ffffff 50.01%, #ffffff 100%);
+			font-family: 'Ubuntu', sans-serif;
+		}
+	</style>
+	<script>
+		setInterval(() => {
+			let blink = Math.round(Math.random()+0.1);
+			if (blink >= 1) {
+				document.querySelectorAll('.neon-blink').forEach(neon => { neon.style.color = `gold` });
+				document.querySelectorAll('.neon-blink').forEach(neon => { neon.style.textShadow = `0px 0px 15px gold`});
+			} else {
+				document.querySelectorAll('.neon-blink').forEach(neon => { neon.style.color = `black` });
+				document.querySelectorAll('.neon-blink').forEach(neon => { neon.style.textShadow = `0px 0px 15px black`});
+			}
+		}, 200);
+
+		setInterval(() => {
+			let color = {
+				r: Math.floor(Math.random() * 255 + 1),
+				g: Math.floor(Math.random() * 255 + 1),
+				b: Math.floor(Math.random() * 255 + 1)
+			};
+			document.querySelectorAll('.neon').forEach(neon => { neon.style.color = `rgb(${color.r}, ${color.g}, ${color.b})` });
+			document.querySelectorAll('.neon').forEach(neon => { neon.style.textShadow = `0px 0px 15px rgb(${color.r}, ${color.g}, ${color.b})`});
+		}, 1000)
+	</script>
+</html>
